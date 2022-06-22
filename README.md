@@ -1,6 +1,8 @@
 # battlesnake-download-tool
 Chrome Extension to download game states for [Battlesnake](https://play.battlesnake.com)
 
+![image](https://user-images.githubusercontent.com/20405891/174937772-3621fa55-41c8-40b7-9892-2e1ee879f251.png)
+
 ## What does this do
 
 This extension will allow you to download JSON inputs for snakes. Useful for building unit tests for your snakes.
