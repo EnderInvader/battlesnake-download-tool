@@ -114,12 +114,18 @@ function transformSnake(snake) {
 	return {
 		id: snake.ID,
 		name: snake.Name,
+		latency: snake.Latency,
+		health: snake.Health,
 		body: body,
 		head: body[0],
 		length: body.length,
-		health: snake.Health,
 		shout: snake.Shout,
-		squad: snake.Squad
+		squad: snake.Squad,
+		customizations: {
+			color: snake.Color,
+			head: snake.HeadType,
+			tail: snake.TailType
+		}
 	}
 }
 
@@ -137,18 +143,20 @@ function transformFrameToInput(game, frameData) {
 
 	you = transformSnake(you)
 
+	console.log(game)
+
 	return {
 		game: {
 			id: game.Game.ID,
 			ruleset: {
 				name: game.Game.Ruleset.name,
-				version: "",
+				version: game.Game.Ruleset.version,
 				settings: {
-					foodSpawnChance: parseInt(game.Game.Ruleset.foodSpawnChance),
-					minimumFood: parseInt(game.Game.Ruleset.minimumFood),
-					hazardDamagePerTurn: parseInt(game.Game.Ruleset.damagePerTurn),
+					foodSpawnChance: parseInt(game.Game.Ruleset.foodSpawnChance, 10),
+					minimumFood: parseInt(game.Game.Ruleset.minimumFood, 10),
+					hazardDamagePerTurn: parseInt(game.Game.Ruleset.damagePerTurn, 10),
 					royale: {
-						shrinkEveryNTurns: parseInt(game.Game.Ruleset.shrinkEveryNTurns)
+						shrinkEveryNTurns: 25//parseInt(game.Game.Ruleset.shrinkEveryNTurns, 10)
 					},
 					squad: {
 						allowBodyCollisions: game.Game.Ruleset.allowBodyCollisions === 'true',
@@ -158,12 +166,14 @@ function transformFrameToInput(game, frameData) {
 					}
 				}
 			},
-			timeout: game.Game.SnakeTimeout
+			map: game.Game.Map,
+			timeout: game.Game.SnakeTimeout,
+			source: game.Game.Source,
 		},
 		turn: data.Turn,
 		board: {
-			width: game.Game.Width,
 			height: game.Game.Height,
+			width: game.Game.Width,
 			// Only grab alive snakes
 			snakes: data.Snakes.filter(snake => snake.Death == null).map(
 				transformSnake
