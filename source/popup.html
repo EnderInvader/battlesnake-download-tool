@@ -8,48 +8,84 @@
 
 			.snake {
 				padding: 2px;
-				border-radius: 4px;
+				border: 2px solid transparent;
 			}
 			.snake:hover {
 				cursor: pointer;
-				background-color: #bdb8b8;
+				border: 2px solid rgb(136, 136, 136);
 			}
 			
 			.container {
 				border: 1px solid black;
 				padding: 2px;
 				margin-bottom: 10px;
-				border-radius: 4px;
+			}
+			.row {
+				display: flex;
+				flex-wrap: nowrap;
+				flex-direction: row;
+			}
+			.spacer {
+				margin-left: 6px;
 			}
 			.title {
 				font-size: 14px;
 				margin-bottom: 4px;
 				white-space: nowrap;
 				text-decoration: underline;
+				text-transform: uppercase;
+				text-align: center;
+				font-weight: bold;
 			}
 			.subtitle {
+				text-transform: uppercase;
+				font-weight: bold;
 			}
 			.active {
-				font-weight: bold;
+				border: 2px solid rgb(136, 136, 136);
+			}
+			.active:hover {
+				background-color: rgb(230, 230, 230);
 			}
 
 			input {
 				margin-bottom: 10px;
 				width: 4ch;
+				border: transparent;
+				border-bottom: 2px solid black;
+				text-align: center;
+				font-weight: bold;
+			}
+			input:focus {
+				outline: none;
+				background-color: rgb(230, 230, 230);
+			}
+			input:hover {
+				background-color: rgb(230, 230, 230);
 			}
 
 			button {
 				border: none;
-				background-color: transparent;
 				transition: background-color 0.1s ease-in;
-				border-bottom: 2px solid black;
-				padding:5px;
-				margin-right:5px;
-				font-weight: 500;
+				padding: 5px;
+				margin: 5px;
+				text-transform: uppercase;
+				font-weight: 600;
+				font-size: .7rem;
+
+				background-color: #736cc7;
+				border: 1px solid #736cc7;
+				border-radius: .25rem;
+				color: rgba(255,255,255,.9);
+			}
+			button:not(:disabled):not(.disabled) {
+				cursor: pointer;
 			}
 			button:hover {
-				cursor: pointer;
-				background-color: #bdb8b8;
+				background-color: #6861c3!important;
+				border: 1px solid #6861c3!important;
+				box-shadow: 0 5px 10px rgba(115,108,199,.4)!important;
+				color: #fff;
 			}
 		</style>
 	</head>
@@ -59,12 +95,14 @@
 				<div class="title">Choose a Snake</div>
 				<div id="snakes"></div>
 			</div>
-			<div>
-				<span class="subtitle">Turn:</span>
+			<div class="spacer">
+				<span class="subtitle">Turn</span>
 				<input type="text" value="0" id="turn"/>
 			</div>
-			<button id="copy">Copy Turn</button>
-			<button id="download">Download Turn</button>
+			<div class="row">
+				<button id="copy">Copy Turn</button>
+				<button id="download">Download Turn</button>
+			</div>
 			<script src="popup.js"></script>
 		</div>
 		<div id="inactive">

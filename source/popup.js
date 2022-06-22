@@ -7,6 +7,7 @@ let regexGameId = /\/g\/(.+)?\//
 
 let gameId = ""
 let gameTurn = 0
+let maxGameTurn = 0
 let snakeName = ""
 
 
@@ -34,6 +35,9 @@ chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
 		})
 			.then(res => res.json())
 			.then(res => {
+				maxGameTurn = res.LastFrame.Turn
+				turnElement.style.width = countCharNumber(maxGameTurn)
+
 				let names = res.LastFrame.Snakes.map(snake => snake.Name)
 				let snakeEl = document.getElementById('snakes')
 				names.forEach(name => {
@@ -66,6 +70,12 @@ copyElement.onclick = function(element) {
 }
 
 turnElement.onchange = function(ev) {
+	if (isNaN(parseInt(turnElement.value, 10))) {
+		turnElement.value = 0
+	} else if (parseInt(turnElement.value, 10) > maxGameTurn) {
+		turnElement.value = maxGameTurn
+	}
+	
 	gameTurn = turnElement.value
 }
 
@@ -178,7 +188,7 @@ function downloadTurn() {
 			.then(res => res.json())
 			.then(res => {
 				downloadFile({
-					filename: "input-"+gameId+"-turn-"+gameTurn+".json",
+					filename: "battlesnake-"+gameId+"-turn-"+gameTurn+".json",
 					content: JSON.stringify(transformFrameToInput(game, res))
 				});
 			})
@@ -204,4 +214,10 @@ function copyTurn() {
 				console.log(err)
 			})
 	})
+}
+
+
+function countCharNumber(number) {
+	number = number.toString()
+	return number.length + "ch"
 }
