@@ -1,19 +1,36 @@
 {
-  "name": "Battlesnake Download Tool",
-  "version": "1.0",
-  "description": "Enables downloading turn inputs for snakes",
-  "manifest_version": 2,
-  "permissions": [
-    "declarativeContent",
-    "storage",
-    "tabs",
-    "https://play.battlesnake.com/g/*"
-  ],
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
-  "page_action": {
-    "default_popup": "popup.html"
-  }
+	"manifest_version": 3,
+	"name": "Battlesnake Download Tool",
+	"version": "2.0",
+
+	"action": {
+		"default_icon": {
+			"16": "icons/icon16.png",
+			"32": "icons/icon32.png",
+			"48": "icons/icon48.png",
+			"128": "icons/icon128.png"
+		},
+		"default_popup": "popup.html"
+	},
+	"description": "Enables downloading of Battlesnake games.",
+	"icons": {
+		"16": "icons/icon16.png",
+		"32": "icons/icon32.png",
+		"48": "icons/icon48.png",
+		"128": "icons/icon128.png"
+	},
+	
+	"author": "EnderInvader",
+	"background": {
+		"service_worker": "background.js"
+	},
+	"permissions": [
+		"declarativeContent",
+		"tabs",
+		"scripting",
+		"downloads"
+	],
+	"host_permissions": [
+		"*://play.battlesnake.com/g/*"
+	]
 }

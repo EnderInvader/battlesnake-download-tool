@@ -7,7 +7,7 @@ This extension will allow you to download JSON inputs for snakes. Useful for bui
 
 ## How to use
 
-Download [zip file](https://github.com/cbinners/battlesnake-download-tool/archive/1.0.zip) of repository, navigate to `chrome://extensions`, turn on developer mode, and select "Load Unpacked"
+Download [zip file](https://github.com/EnderInvader/battlesnake-download-tool/archive/2.0.zip) of repository, navigate to `chrome://extensions`, turn on developer mode, and select "Load Unpacked"
 
 Once this is loaded, go to a game on play.battlesnake.com, and use the extension to download input states for the snakes of your choice..
 

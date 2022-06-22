@@ -1,34 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      #popup {
-        width: 200px;
-      }
-      #snakes {
-        margin-bottom: 10px;
-      }
+	<head>
+		<style>
+			#popup {
+				width: 200px;
+			}
 
-      .title {
-        font-size: 14px;
-        margin-bottom: 10px;
-      }
-      .active {
-        font-weight: bold;
-      }
-      input {
-        margin-bottom: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="popup">
-      <div class="title">Choose a Snake</div>
-      <div id="snakes"></div>
-      <div>Turn</div>
-      <input type="text" value="0" id="turn" />
-      <button id="load">Download</button>
-    </div>
-    <script src="popup.js"></script>
-  </body>
+			.snake {
+				padding: 2px;
+				border-radius: 4px;
+			}
+			.snake:hover {
+				cursor: pointer;
+				background-color: #bdb8b8;
+			}
+			
+			.container {
+				border: 1px solid black;
+				padding: 2px;
+				margin-bottom: 10px;
+				border-radius: 4px;
+			}
+			.title {
+				font-size: 14px;
+				margin-bottom: 4px;
+				white-space: nowrap;
+				text-decoration: underline;
+			}
+			.subtitle {
+			}
+			.active {
+				font-weight: bold;
+			}
+
+			input {
+				margin-bottom: 10px;
+				width: 4ch;
+			}
+
+			button {
+				border: none;
+				background-color: transparent;
+				transition: background-color 0.1s ease-in;
+				border-bottom: 2px solid black;
+				padding:5px;
+				margin-right:5px;
+				font-weight: 500;
+			}
+			button:hover {
+				cursor: pointer;
+				background-color: #bdb8b8;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="popup" hidden>
+			<div class="container">
+				<div class="title">Choose a Snake</div>
+				<div id="snakes"></div>
+			</div>
+			<div>
+				<span class="subtitle">Turn:</span>
+				<input type="text" value="0" id="turn"/>
+			</div>
+			<button id="copy">Copy Turn</button>
+			<button id="download">Download Turn</button>
+			<script src="popup.js"></script>
+		</div>
+		<div id="inactive">
+			<div class="title">Extension Inactive</div>
+			<div>Extension only active on Battlesnake games</div>
+		</div>
+	</body>
 </html>
